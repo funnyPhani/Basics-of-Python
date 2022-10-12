@@ -259,3 +259,77 @@ while True:
 
 
 ```
+
+
+```python
+# DataFrame analysis
+import pyforest
+df = pd.read_excel("testbook.xlsx")
+df[df.isnull().any(axis=1)]
+d = []
+for i in df[df.isnull().any(axis=1)].index:
+    d.append(i)
+print(d)  
+
+d1 = {}
+for pk,i in enumerate(df.index):
+    for j in d:
+        if i == j:
+            d1[pk] = df.iloc[:i]
+            df.drop(df.iloc[:j].index,axis = 0,inplace = True)
+else:
+    d1[pk] = df.iloc[i:]
+
+                
+# def data(df):
+#     df = pd.read_excel("testbook.xlsx")
+#     d = []
+#     for i in df[df.isnull().any(axis=1)].index:
+#         d.append(i)
+#     print(d)
+#     for i in d:
+        
+#         df.drop(df.iloc[0:i],axis = 1, inplace = True)
+#         display(df)
+# data(df)
+
+df = pd.read_excel("testbook.xlsx")
+
+d = []
+for i in df[df.isnull().any(axis=1)].index:
+    d.append(i)
+print(d)  
+
+# for i in d:
+#     display(df.iloc[:i])
+#     df.drop(df.iloc[])
+    
+    
+
+
+display(df.iloc[0:2])
+display(df.iloc[3:5])
+display(df.iloc[6:8])
+display(df.iloc[9:])
+
+for i,j in enumerate(d):
+    if i == 0:
+        for j in range(0,j):
+            print(j,end = " ")
+    elif i == 1:
+        for j in range(d[0]+1,j):
+            print(j,end = " ")
+    elif i == 2:
+        for j in range(d[1]+1,j):
+            print(j,end = " ")
+    elif i == 3:
+        for j in range(d[2]+1,j):
+            print(j,end = " ")
+    print()
+else:
+    for i in range(d[-1]+1,18):
+        print(i,end = " ")
+        
+
+
+```
